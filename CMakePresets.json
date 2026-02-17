@@ -1,0 +1,126 @@
+{
+  "version": 4,
+
+  "configurePresets": [
+    {
+      "name": "base",
+      "hidden": true,
+      "generator": "Ninja",
+      "cacheVariables": {
+        "FW_NAME": "app",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+      }
+    },
+
+    {
+      "name": "release",
+      "hidden": true,
+      "inherits": "base",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    },
+    {
+      "name": "debug",
+      "hidden": true,
+      "inherits": "base",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+
+    {
+      "name": "pico",
+      "hidden": true,
+      "cacheVariables": { "PICO_BOARD": "pico" }
+    },
+    {
+      "name": "picow",
+      "hidden": true,
+      "cacheVariables": { "PICO_BOARD": "pico_w" }
+    },
+    {
+      "name": "pico2",
+      "hidden": true,
+      "cacheVariables": { "PICO_BOARD": "pico2" }
+    },
+    {
+      "name": "pico2w",
+      "hidden": true,
+      "cacheVariables": { "PICO_BOARD": "pico2_w" }
+    },
+
+    {
+      "name": "pico-release",
+      "displayName": "Pico Release",
+      "inherits": [ "release", "pico" ],
+      "binaryDir": "${sourceDir}/build/${presetName}"
+    },
+    {
+      "name": "pico-debug",
+      "displayName": "Pico Debug",
+      "inherits": [ "debug", "pico" ],
+      "binaryDir": "${sourceDir}/build/${presetName}"
+    },
+
+    {
+      "name": "picow-release",
+      "displayName": "Pico W Release",
+      "inherits": [ "release", "picow" ],
+      "binaryDir": "${sourceDir}/build/${presetName}"
+    },
+    {
+      "name": "picow-debug",
+      "displayName": "Pico W Debug",
+      "inherits": [ "debug", "picow" ],
+      "binaryDir": "${sourceDir}/build/${presetName}"
+    },
+
+    {
+      "name": "pico2-release",
+      "displayName": "Pico 2 Release",
+      "inherits": [ "release", "pico2" ],
+      "binaryDir": "${sourceDir}/build/${presetName}"
+    },
+    {
+      "name": "pico2-debug",
+      "displayName": "Pico 2 Debug",
+      "inherits": [ "debug", "pico2" ],
+      "binaryDir": "${sourceDir}/build/${presetName}"
+    },
+
+    {
+      "name": "pico2w-release",
+      "displayName": "Pico 2 W Release",
+      "inherits": [ "release", "pico2w" ],
+      "binaryDir": "${sourceDir}/build/${presetName}"
+    },
+    {
+      "name": "pico2w-debug",
+      "displayName": "Pico 2 W Debug",
+      "inherits": [ "debug", "pico2w" ],
+      "binaryDir": "${sourceDir}/build/${presetName}"
+    }
+  ],
+
+  "buildPresets": [
+    { "name": "build-pico-release",   "configurePreset": "pico-release" },
+    { "name": "build-pico-debug",     "configurePreset": "pico-debug" },
+    { "name": "build-picow-release",  "configurePreset": "picow-release" },
+    { "name": "build-picow-debug",    "configurePreset": "picow-debug" },
+    { "name": "build-pico2-release",  "configurePreset": "pico2-release" },
+    { "name": "build-pico2-debug",    "configurePreset": "pico2-debug" },
+    { "name": "build-pico2w-release", "configurePreset": "pico2w-release" },
+    { "name": "build-pico2w-debug",   "configurePreset": "pico2w-debug" },
+
+    { "name": "flash-pico-release",   "configurePreset": "pico-release",   "targets": ["flash"] },
+    { "name": "flash-pico-debug",     "configurePreset": "pico-debug",     "targets": ["flash"] },
+    { "name": "flash-picow-release",  "configurePreset": "picow-release",  "targets": ["flash"] },
+    { "name": "flash-picow-debug",    "configurePreset": "picow-debug",    "targets": ["flash"] },
+    { "name": "flash-pico2-release",  "configurePreset": "pico2-release",  "targets": ["flash"] },
+    { "name": "flash-pico2-debug",    "configurePreset": "pico2-debug",    "targets": ["flash"] },
+    { "name": "flash-pico2w-release", "configurePreset": "pico2w-release", "targets": ["flash"] },
+    { "name": "flash-pico2w-debug",   "configurePreset": "pico2w-debug",   "targets": ["flash"] }
+  ]
+
+}
